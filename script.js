@@ -1,7 +1,8 @@
 const wrapper = document.querySelector(".wrapper"),
   qrInput = wrapper.querySelector(".form input"),
   generateBtn = wrapper.querySelector(".form button"),
-  qrImg = wrapper.querySelector(".qr-code img");
+  qrImg = wrapper.querySelector(".qr-code img"),
+  qrDownload = wrapper.querySelector(".qr-code a");
 let preValue;
 
 generateBtn.addEventListener("click", () => {
@@ -10,6 +11,7 @@ generateBtn.addEventListener("click", () => {
   preValue = qrValue;
   generateBtn.innerText = "Generating QR Code...";
   qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${qrValue}`;
+  // qrDownload.href = qrImg.src
   qrImg.addEventListener("load", () => {
     wrapper.classList.add("active");
     generateBtn.innerText = "Generate QR Code";
